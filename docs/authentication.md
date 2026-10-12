@@ -437,9 +437,9 @@ configuration][trusted-proxy-headers] for the optional name, email, and groups h
 > required and restricts which source addresses may set identity headers, accepting individual IPs and CIDRs.
 > Without it Cetacean refuses to start.
 
-The proxy must replace these headers, not append to them. A request carrying any identity header, the secret
-header, or a header a grant source reads more than once is refused, because one of the values came from the
-client. A groups header may name at most 256 groups.
+The proxy must replace these headers, not append to them. Cetacean refuses a request when an identity, secret, or
+grant-source header appears more than once; the extra value may have come from the client. A groups header may
+contain at most 256 groups.
 
 For defense in depth, require a shared secret on every proxied request:
 
